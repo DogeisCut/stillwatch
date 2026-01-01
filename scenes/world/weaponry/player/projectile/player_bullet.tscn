@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ir6qnhl132k0"]
+[gd_scene load_steps=7 format=3 uid="uid://ir6qnhl132k0"]
 
 [ext_resource type="Script" uid="uid://c7g18hv0wl4r1" path="res://scenes/world/weaponry/player/projectile/player_bullet.gd" id="1_mbmgk"]
+[ext_resource type="Shader" uid="uid://lean60ke2pif" path="res://shaders/polygon.gdshader" id="2_u7ap3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mbmgk"]
 bounce = 1.0
@@ -9,15 +10,16 @@ bounce = 1.0
 resource_local_to_scene = true
 radius = 32.0
 
-[sub_resource type="Gradient" id="Gradient_mbmgk"]
-offsets = PackedFloat32Array(0, 0.96666664, 1)
-colors = PackedColorArray(0.42352942, 1, 0.43137255, 1, 0.42352942, 1, 0.43137255, 1, 0.44705883, 1, 0.44705883, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_joe8g"]
+shader = ExtResource("2_u7ap3")
+shader_parameter/fill_color = Color(0.48095202, 1, 0.3891744, 1)
+shader_parameter/outline_color = Color(0.18457034, 0.4921875, 0.17897728, 1)
+shader_parameter/outline_thickness = 2.0
+shader_parameter/polygon_sides = 0
+shader_parameter/polygon_rotation_radians = 0.0
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_oxuh6"]
-gradient = SubResource("Gradient_mbmgk")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wy6eo"]
+resource_local_to_scene = true
 
 [node name="PlayerBullet" type="RigidBody2D"]
 collision_layer = 2
@@ -37,7 +39,8 @@ shape = SubResource("CircleShape2D_i41lb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
-texture = SubResource("GradientTexture2D_oxuh6")
+material = SubResource("ShaderMaterial_joe8g")
+texture = SubResource("PlaceholderTexture2D_wy6eo")
 
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 5.0

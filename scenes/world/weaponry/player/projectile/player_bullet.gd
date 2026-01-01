@@ -10,7 +10,7 @@ const BULLET_CRUMPLE_EFFECT = preload("uid://bw2l0nk47n0c2")
 
 func init():
 	(collision_shape_2d.shape as CircleShape2D).radius = size/2.0
-	sprite_2d.scale = Vector2.ONE * 1/64.0 * size
+	(sprite_2d.texture as PlaceholderTexture2D).size = Vector2.ONE * size
 
 func _on_body_entered(body):
 	if body is Enemy:
