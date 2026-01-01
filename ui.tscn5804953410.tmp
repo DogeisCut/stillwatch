@@ -1,0 +1,291 @@
+[gd_scene load_steps=14 format=3 uid="uid://dsh07ecsrpv4n"]
+
+[ext_resource type="Script" uid="uid://b0dmxvop16aiq" path="res://ui.gd" id="1_fyqef"]
+[ext_resource type="Script" uid="uid://e005j0ks8qae" path="res://crate_shop_button.gd" id="2_m6e0p"]
+[ext_resource type="FontFile" uid="uid://cq6dcwytxwkek" path="res://Ubuntu-Regular.ttf" id="2_n5ude"]
+[ext_resource type="Script" uid="uid://msdmwkyf5mjn" path="res://shoot_speed_shop_button.gd" id="3_27fn8"]
+[ext_resource type="Script" uid="uid://c7sm5dla4rrxj" path="res://turret_shop_button.gd" id="4_nltto"]
+[ext_resource type="Script" uid="uid://caebp7rqvp31f" path="res://auto_turret_shop_button.gd" id="5_ibotj"]
+
+[sub_resource type="Theme" id="Theme_ok7cu"]
+default_font = ExtResource("2_n5ude")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/constants/outline_size = 8
+Label/constants/outline_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_f3sb7"]
+font_size = 64
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n5ude"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ibotj"]
+font_size = 64
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y4yjw"]
+font_size = 32
+font_color = Color(1, 0.83137256, 0, 1)
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m6e0p"]
+font_size = 64
+font_color = Color(1, 0.83243275, 0, 1)
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fyqef"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_fyqef")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ok7cu")
+
+[node name="GameUI" type="Control" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Time" type="Label" parent="Control/GameUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = 16.0
+offset_right = 31.0
+offset_bottom = 39.0
+grow_horizontal = 2
+text = "%time%"
+label_settings = SubResource("LabelSettings_f3sb7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GameUI"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 512.0
+offset_right = 282.0
+offset_bottom = 632.0
+alignment = 2
+
+[node name="Label" type="Label" parent="Control/GameUI/VBoxContainer"]
+layout_mode = 2
+text = "Score:"
+label_settings = SubResource("LabelSettings_n5ude")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="Control/GameUI/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "%score%"
+label_settings = SubResource("LabelSettings_ibotj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/GameUI"]
+layout_mode = 0
+offset_left = 856.0
+offset_top = 518.0
+offset_right = 1114.0
+offset_bottom = 632.0
+alignment = 2
+
+[node name="Label" type="Label" parent="Control/GameUI/VBoxContainer2"]
+layout_mode = 2
+text = "Coins:"
+label_settings = SubResource("LabelSettings_y4yjw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Coins" type="Label" parent="Control/GameUI/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "%coins%"
+label_settings = SubResource("LabelSettings_m6e0p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/GameUI"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 282.0
+offset_bottom = 136.0
+alignment = 2
+
+[node name="Label" type="Label" parent="Control/GameUI/VBoxContainer3"]
+layout_mode = 2
+text = "Wave:"
+label_settings = SubResource("LabelSettings_n5ude")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wave" type="Label" parent="Control/GameUI/VBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "%wave%"
+label_settings = SubResource("LabelSettings_ibotj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleUI" type="Control" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/TitleUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -84.0
+offset_right = 86.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "STOPwatch"
+label_settings = SubResource("LabelSettings_fyqef")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/TitleUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = 34.0
+offset_right = 112.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Click anywhere to begin."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShopUI" type="Control" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control/ShopUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -208.0
+offset_right = 200.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="HBoxContainer" parent="Control/ShopUI/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -208.0
+offset_right = 192.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ShopUI/Panel/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CrateShopButton" type="Button" parent="Control/ShopUI/Panel/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "Buy a Crate
+(25)"
+script = ExtResource("2_m6e0p")
+
+[node name="ShootSpeedShopButton" type="Button" parent="Control/ShopUI/Panel/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "Buy Faster Shoot Speed
+(50)"
+script = ExtResource("3_27fn8")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/ShopUI/Panel/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TurretShopButton" type="Button" parent="Control/ShopUI/Panel/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "Buy a Turret Upgrade
+(500)"
+script = ExtResource("4_nltto")
+
+[node name="AutoTurretShopButton" type="Button" parent="Control/ShopUI/Panel/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "Buy an Auto-Turret
+(100)"
+script = ExtResource("5_ibotj")
+
+[node name="SkipTimer" type="Button" parent="Control/ShopUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -240.0
+offset_right = 48.0
+offset_bottom = -213.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Skip Timer"
+
+[connection signal="button_down" from="Control/ShopUI/SkipTimer" to="." method="_on_skip_timer_button_down"]

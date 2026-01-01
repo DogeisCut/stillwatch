@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://chycx4wuxjuss"]
+
+[ext_resource type="Script" uid="uid://qptweqejgxqo" path="res://turret.gd" id="1_c5apd"]
+
+[sub_resource type="Gradient" id="Gradient_c5apd"]
+offsets = PackedFloat32Array(0, 0.9785156, 1)
+colors = PackedColorArray(0.34509805, 0.34509805, 0.34509805, 1, 0.34509805, 0.34509805, 0.34509805, 1, 0.34509805, 0.34509805, 0.34509805, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_coqkk"]
+gradient = SubResource("Gradient_c5apd")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="BaseTurret" type="Node2D" node_paths=PackedStringArray("barrels")]
+script = ExtResource("1_c5apd")
+barrels = [NodePath("")]
+
+[node name="Base" type="Sprite2D" parent="."]
+scale = Vector2(0.375, 0.375)
+texture = SubResource("GradientTexture2D_coqkk")
+
+[node name="ShootTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+process_callback = 0
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

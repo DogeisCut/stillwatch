@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhrr4hfjmh8u5"]
+
+[ext_resource type="PackedScene" uid="uid://chycx4wuxjuss" path="res://turret.tscn" id="1_lo2k0"]
+[ext_resource type="PackedScene" uid="uid://b37bjp40ltjel" path="res://barrel.tscn" id="2_qt4fv"]
+
+[node name="Level2Turret" node_paths=PackedStringArray("shoot_order") instance=ExtResource("1_lo2k0")]
+shoot_order = [NodePath("Barrel"), NodePath("Barrel2")]
+base_shoot_speed = 0.25
+
+[node name="Barrel" parent="." index="0" node_paths=PackedStringArray("turret") instance=ExtResource("2_qt4fv")]
+position = Vector2(0, -12)
+width = 15.0
+turret = NodePath("..")
+
+[node name="Barrel2" parent="." index="1" node_paths=PackedStringArray("turret") instance=ExtResource("2_qt4fv")]
+position = Vector2(0, 12)
+width = 15.0
+turret = NodePath("..")
