@@ -17,7 +17,7 @@ config/icon="uid://cr4uctmr65g6v"
 
 [autoload]
 
-Game="*res://game.tscn"
+Game="*res://autoload/game.tscn"
 
 [display]
 

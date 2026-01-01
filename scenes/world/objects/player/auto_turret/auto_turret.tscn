@@ -1,0 +1,239 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2ek35ww2foin"]
+
+[ext_resource type="Script" uid="uid://cc26c2siq4qmp" path="res://scenes/world/objects/player/auto_turret/auto_turret.gd" id="1_gaj2c"]
+[ext_resource type="PackedScene" uid="uid://cxdw3chjmk7ty" path="res://scenes/world/weaponry/player/turret/turret_presets/level_1_turret.tscn" id="2_8okuy"]
+[ext_resource type="AudioStream" uid="uid://tmo0e3qawumu" path="res://assets/audio/sounds/shared/crumple.wav" id="2_twe50"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f3sb7"]
+friction = 0.0
+bounce = 1.0
+absorbent = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u27ou"]
+radius = 16.0
+
+[sub_resource type="Animation" id="Animation_mo0jf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.2109375, 0.2109375, 0.2109375, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Polygon2D:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Level1Turret:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Level1Turret:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_uep05"]
+resource_name = "spawn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.21176471, 0.21176471, 0.21176471, 0), Color(0.2109375, 0.2109375, 0.2109375, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Polygon2D:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Level1Turret:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Level1Turret:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.6, 1.6), Vector2(0.8, 0.8)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ggnq6"]
+_data = {
+&"RESET": SubResource("Animation_mo0jf"),
+&"spawn": SubResource("Animation_uep05")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gaj2c"]
+radius = 193.49419
+
+[node name="AutoTurret" type="RigidBody2D" node_paths=PackedStringArray("turret") groups=["auto_turret"]]
+collision_layer = 64
+collision_mask = 105
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_f3sb7")
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 10.0
+script = ExtResource("1_gaj2c")
+turret = NodePath("Level1Turret")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.2109375, 0.2109375, 0.2109375, 1)
+polygon = PackedVector2Array(-24, -16, -16, -24, 0, -8, 16, -24, 24, -16, 8, 0, 24, 16, 16, 24, 0, 8, -16, 24, -24, 16, -8, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u27ou")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ggnq6")
+}
+autoplay = "spawn"
+
+[node name="Level1Turret" parent="." node_paths=PackedStringArray("position_owner") instance=ExtResource("2_8okuy")]
+scale = Vector2(0.8, 0.8)
+position_owner = NodePath("..")
+base_shoot_speed = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gaj2c")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, -192, 49, -186, 96, -168, 136, -136, 168, -96, 186, -55, 192, 0, 186, 49, 168, 96, 136, 136, 96, 168, 52, 186, 0, 193, -52, 185, -96, 168, -136, 136, -168, 96, -186, 50, -192, 0, -186, -49, -168, -96, -136, -136, -96, -168, -51, -186)
+closed = true
+width = 2.0
+default_color = Color(1, 1, 1, 0.4745098)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_twe50")
+pitch_scale = 0.5
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

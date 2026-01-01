@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cg8lem6vrhu7j"]
+
+[ext_resource type="Script" uid="uid://d3oe8bdcs2w5k" path="res://autoload/game.gd" id="1_80nbo"]
+[ext_resource type="AudioStream" uid="uid://bidbsufmtuibj" path="res://assets/audio/sounds/player/lock.wav" id="2_feb5d"]
+[ext_resource type="AudioStream" uid="uid://cb6dquwvqgpr0" path="res://assets/audio/sounds/player/unlock.wav" id="3_fc0e3"]
+[ext_resource type="AudioStream" uid="uid://cxumgblyq85vd" path="res://assets/audio/music/fighting/no_go.wav" id="4_fc0e3"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_80nbo")
+
+[node name="30SecondsTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 30.0
+one_shot = true
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="LockSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_feb5d")
+
+[node name="UnlockSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fc0e3")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fc0e3")
+volume_db = -15.0
+autoplay = true
