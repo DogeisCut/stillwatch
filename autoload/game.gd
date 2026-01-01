@@ -43,7 +43,7 @@ func change_game_state(new_state: GameStates):
 			music.stop()
 			await get_tree().create_timer(5).timeout
 			change_game_state(GameStates.TITLE)
-			get_tree().change_scene_to_file("res://world.tscn")
+			get_tree().change_scene_to_file("uid://byvdrfuvos8sc")
 			difficulty = 0
 			score = 0
 			coins = 100
