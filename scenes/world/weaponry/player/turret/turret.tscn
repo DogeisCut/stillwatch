@@ -1,25 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://chycx4wuxjuss"]
+[gd_scene load_steps=5 format=3 uid="uid://chycx4wuxjuss"]
 
 [ext_resource type="Script" uid="uid://qptweqejgxqo" path="res://scenes/world/weaponry/player/turret/turret.gd" id="1_c5apd"]
+[ext_resource type="Shader" uid="uid://lean60ke2pif" path="res://shaders/polygon.gdshader" id="2_8ahsi"]
 
-[sub_resource type="Gradient" id="Gradient_c5apd"]
-offsets = PackedFloat32Array(0, 0.9785156, 1)
-colors = PackedColorArray(0.34509805, 0.34509805, 0.34509805, 1, 0.34509805, 0.34509805, 0.34509805, 1, 0.34509805, 0.34509805, 0.34509805, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_67e3g"]
+shader = ExtResource("2_8ahsi")
+shader_parameter/fill_color = Color(0.3515625, 0.3515625, 0.3515625, 1)
+shader_parameter/outline_color = Color(0.2734375, 0.2734375, 0.2734375, 1)
+shader_parameter/outline_thickness = 2.0
+shader_parameter/polygon_sides = 0
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_coqkk"]
-gradient = SubResource("Gradient_c5apd")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cnqwf"]
+size = Vector2(48, 48)
 
 [node name="BaseTurret" type="Node2D"]
 script = ExtResource("1_c5apd")
 
 [node name="Base" type="Sprite2D" parent="."]
-scale = Vector2(0.375, 0.375)
-texture = SubResource("GradientTexture2D_coqkk")
+material = SubResource("ShaderMaterial_67e3g")
+texture = SubResource("PlaceholderTexture2D_cnqwf")
 
 [node name="ShootTimer" type="Timer" parent="."]
 unique_name_in_owner = true

@@ -1,12 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://lj0sjbi3k0oo"]
+[gd_scene load_steps=11 format=3 uid="uid://lj0sjbi3k0oo"]
 
 [ext_resource type="Script" uid="uid://dmnw4axjyua12" path="res://scenes/world/objects/player/crate/crate.gd" id="1_uep05"]
 [ext_resource type="AudioStream" uid="uid://tmo0e3qawumu" path="res://assets/audio/sounds/shared/crumple.wav" id="2_mo0jf"]
+[ext_resource type="Shader" uid="uid://lean60ke2pif" path="res://shaders/polygon.gdshader" id="2_tg2ih"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f3sb7"]
 friction = 0.0
 bounce = 1.0
 absorbent = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rrhfh"]
+shader = ExtResource("2_tg2ih")
+shader_parameter/fill_color = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(0.5390625, 0.5390625, 0.5390625, 1)
+shader_parameter/outline_thickness = 2.0
+shader_parameter/polygon_sides = 1
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xkrwr"]
+size = Vector2(192, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3sb7"]
 size = Vector2(192, 64)
@@ -144,8 +155,9 @@ linear_damp = 10.0
 angular_damp = 10.0
 script = ExtResource("1_uep05")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-96, -32, 96, -32, 96, 32, -96, 32)
+[node name="Polygon2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_rrhfh")
+texture = SubResource("PlaceholderTexture2D_xkrwr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f3sb7")

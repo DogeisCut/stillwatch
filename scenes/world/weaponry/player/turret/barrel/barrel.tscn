@@ -1,8 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://b37bjp40ltjel"]
+[gd_scene load_steps=11 format=3 uid="uid://b37bjp40ltjel"]
 
 [ext_resource type="Script" uid="uid://jsg7p8r28iin" path="res://scenes/world/weaponry/player/turret/barrel/barrel.gd" id="1_a12vh"]
 [ext_resource type="AudioStream" uid="uid://bcse3ge0uv068" path="res://assets/audio/sounds/player/shoot.wav" id="2_rdxsi"]
 [ext_resource type="PackedScene" uid="uid://ir6qnhl132k0" path="res://scenes/world/weaponry/player/projectile/player_bullet.tscn" id="2_ygdis"]
+[ext_resource type="Shader" uid="uid://lean60ke2pif" path="res://shaders/polygon.gdshader" id="3_s1rcv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m05sj"]
+shader = ExtResource("3_s1rcv")
+shader_parameter/fill_color = Color(0.56640625, 0.56640625, 0.56640625, 1)
+shader_parameter/outline_color = Color(0.30859375, 0.30859375, 0.30859375, 1)
+shader_parameter/outline_thickness = 2.0
+shader_parameter/polygon_sides = 1
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vdxpm"]
+resource_local_to_scene = true
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hqtel"]
 random_pitch = 1.1
@@ -14,7 +25,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals:position")
+tracks/0/path = NodePath("Origin:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -30,7 +41,7 @@ length = 0.26667002
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals:position")
+tracks/0/path = NodePath("Origin:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,16 +61,19 @@ _data = {
 script = ExtResource("1_a12vh")
 bullet_scene = ExtResource("2_ygdis")
 
-[node name="Visuals" type="Polygon2D" parent="."]
-unique_name_in_owner = true
-color = Color(0.5234375, 0.5234375, 0.5234375, 1)
-polygon = PackedVector2Array(0, -0.5, 1, -0.5, 1, 0.5, 0, 0.5)
+[node name="Origin" type="Marker2D" parent="."]
 
-[node name="BarrelTip" type="Marker2D" parent="Visuals"]
+[node name="Visuals" type="Sprite2D" parent="Origin"]
 unique_name_in_owner = true
-position = Vector2(1, 0)
+material = SubResource("ShaderMaterial_m05sj")
+position = Vector2(0.5, 0)
+texture = SubResource("PlaceholderTexture2D_vdxpm")
 
-[node name="ShootSound" type="AudioStreamPlayer2D" parent="Visuals/BarrelTip"]
+[node name="BarrelTip" type="Marker2D" parent="Origin/Visuals"]
+unique_name_in_owner = true
+position = Vector2(0.5, 0)
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="Origin/Visuals/BarrelTip"]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_hqtel")
 

@@ -13,7 +13,9 @@ class_name Barrel
 @export var turret: Turret
 
 func _ready():
-	visuals.scale = Vector2(length, width)
+	(visuals.texture as PlaceholderTexture2D).size = Vector2(length, width)
+	visuals.position.x = length / 2.0
+	barrel_tip.position.x = length / 2.0 
 
 func shoot() -> void:
 	animation_player.stop()

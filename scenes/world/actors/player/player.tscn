@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsrsa45h44drx"]
+[gd_scene load_steps=13 format=3 uid="uid://bsrsa45h44drx"]
 
 [ext_resource type="Script" uid="uid://bpnujkqiy2vnq" path="res://scenes/world/actors/player/player.gd" id="1_4flbx"]
 [ext_resource type="Shader" uid="uid://lean60ke2pif" path="res://shaders/polygon.gdshader" id="2_kaqx2"]
@@ -10,9 +10,8 @@ shader_parameter/fill_color = Color(0.7734375, 1, 0.546875, 1)
 shader_parameter/outline_color = Color(0.42009577, 0.5294118, 0.35036424, 1)
 shader_parameter/outline_thickness = 2.0
 shader_parameter/polygon_sides = 8
-shader_parameter/polygon_rotation_radians = 0.0
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vceuw"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kaqx2"]
 size = Vector2(64, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kaqx2"]
@@ -20,8 +19,10 @@ shader = ExtResource("2_kaqx2")
 shader_parameter/fill_color = Color(0.81640625, 0.81640625, 0.81640625, 1)
 shader_parameter/outline_color = Color(0.4609375, 0.4609375, 0.4609375, 1)
 shader_parameter/outline_thickness = 2.0
-shader_parameter/polygon_sides = 4
-shader_parameter/polygon_rotation_radians = 0.0
+shader_parameter/polygon_sides = 1
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vceuw"]
+size = Vector2(12, 66)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 radius = 32.0
@@ -192,21 +193,18 @@ script = ExtResource("1_4flbx")
 
 [node name="Body" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_g8358")
-texture = SubResource("PlaceholderTexture2D_vceuw")
+texture = SubResource("PlaceholderTexture2D_kaqx2")
 
 [node name="Lock" type="CanvasGroup" parent="."]
-visible = false
 
 [node name="LockBracket" type="Sprite2D" parent="Lock"]
 material = SubResource("ShaderMaterial_kaqx2")
 rotation = -0.7853982
-scale = Vector2(0.24999999, 1.40625)
 texture = SubResource("PlaceholderTexture2D_vceuw")
 
 [node name="LockBracket2" type="Sprite2D" parent="Lock"]
 material = SubResource("ShaderMaterial_kaqx2")
 rotation = -2.3561945
-scale = Vector2(0.24999999, 1.40625)
 texture = SubResource("PlaceholderTexture2D_vceuw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
