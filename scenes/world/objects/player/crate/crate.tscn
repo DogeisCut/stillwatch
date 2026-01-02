@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://lj0sjbi3k0oo"]
+[gd_scene load_steps=13 format=3 uid="uid://lj0sjbi3k0oo"]
 
 [ext_resource type="Script" uid="uid://dmnw4axjyua12" path="res://scenes/world/objects/player/crate/crate.gd" id="1_uep05"]
 [ext_resource type="AudioStream" uid="uid://tmo0e3qawumu" path="res://assets/audio/sounds/shared/crumple.wav" id="2_mo0jf"]
@@ -18,6 +18,12 @@ shader_parameter/polygon_sides = 1
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xkrwr"]
 size = Vector2(192, 64)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tg2ih"]
+size = Vector2(176, 48)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rrhfh"]
+size = Vector2(199, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3sb7"]
 size = Vector2(192, 64)
@@ -158,6 +164,19 @@ script = ExtResource("1_uep05")
 [node name="Visuals" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_rrhfh")
 texture = SubResource("PlaceholderTexture2D_xkrwr")
+
+[node name="Visuals3" type="Sprite2D" parent="Visuals"]
+material = SubResource("ShaderMaterial_rrhfh")
+texture = SubResource("PlaceholderTexture2D_tg2ih")
+
+[node name="Visuals2" type="Sprite2D" parent="Visuals"]
+clip_children = 1
+texture = SubResource("PlaceholderTexture2D_tg2ih")
+
+[node name="Visuals3" type="Sprite2D" parent="Visuals/Visuals2"]
+material = SubResource("ShaderMaterial_rrhfh")
+rotation = 0.27052602
+texture = SubResource("PlaceholderTexture2D_rrhfh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f3sb7")

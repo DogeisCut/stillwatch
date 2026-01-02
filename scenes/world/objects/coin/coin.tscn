@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://buiy14y4dkj8e"]
+[gd_scene load_steps=12 format=3 uid="uid://buiy14y4dkj8e"]
 
 [ext_resource type="Script" uid="uid://dtc2e2bn28l0y" path="res://scenes/world/objects/coin/coin.gd" id="1_d5gmh"]
+[ext_resource type="Shader" uid="uid://lean60ke2pif" path="res://shaders/polygon.gdshader" id="2_u1pie"]
 [ext_resource type="AudioStream" uid="uid://d3xa420i3hskf" path="res://assets/audio/sounds/coins/collecting.wav" id="2_v7riw"]
 [ext_resource type="AudioStream" uid="uid://ba4p6nrcs3m2" path="res://assets/audio/sounds/coins/collect.wav" id="3_pdq0q"]
 
@@ -8,15 +9,15 @@
 friction = 0.0
 bounce = 1.0
 
-[sub_resource type="Gradient" id="Gradient_d5gmh"]
-offsets = PackedFloat32Array(0, 0.96666664, 1)
-colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qr0nf"]
+shader = ExtResource("2_u1pie")
+shader_parameter/fill_color = Color(1, 0.9175284, 0, 1)
+shader_parameter/outline_color = Color(0.80859375, 0.5856515, 0.07046102, 1)
+shader_parameter/outline_thickness = 2.0
+shader_parameter/polygon_sides = 6
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0t63x"]
-gradient = SubResource("Gradient_d5gmh")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_y8lri"]
+size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6qpsl"]
 radius = 12.0
@@ -46,8 +47,8 @@ linear_damp = 4.0
 script = ExtResource("1_d5gmh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = SubResource("GradientTexture2D_0t63x")
+material = SubResource("ShaderMaterial_qr0nf")
+texture = SubResource("PlaceholderTexture2D_y8lri")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true

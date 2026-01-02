@@ -67,7 +67,6 @@ script = ExtResource("1_7k104")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
 radius = 32.0
-debug_enabled = true
 
 [node name="Rotator" type="Node2D" parent="."]
 

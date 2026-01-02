@@ -6,6 +6,7 @@ var collected: bool = false
 @onready var collecting_sound = %CollectingSound
 @onready var collect_sound = %CollectSound
 @onready var collision_shape_2d = %CollisionShape2D
+@onready var sprite_2d = $Sprite2D
 
 func _on_hitbox_body_entered(body):
 	if body is Player and not collected and Game.game_state != Game.GameStates.DEAD:
@@ -30,6 +31,8 @@ func _on_hitbox_body_entered(body):
 			queue_free()
 		)
 
+func _ready():
+	sprite_2d.rotation = randf_range(0, PI*2)
 
 func _on_physics_disable_timer_timeout():
 	collision_shape_2d.disabled = true
