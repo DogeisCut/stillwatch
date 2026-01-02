@@ -195,16 +195,18 @@ script = ExtResource("1_4flbx")
 material = SubResource("ShaderMaterial_g8358")
 texture = SubResource("PlaceholderTexture2D_kaqx2")
 
-[node name="Lock" type="CanvasGroup" parent="."]
+[node name="Lock" type="Node2D" parent="."]
 
 [node name="LockBracket" type="Sprite2D" parent="Lock"]
 material = SubResource("ShaderMaterial_kaqx2")
 rotation = -0.7853982
+scale = Vector2(0.99999994, 0.99999994)
 texture = SubResource("PlaceholderTexture2D_vceuw")
 
 [node name="LockBracket2" type="Sprite2D" parent="Lock"]
 material = SubResource("ShaderMaterial_kaqx2")
 rotation = -2.3561945
+scale = Vector2(0.99999994, 0.99999994)
 texture = SubResource("PlaceholderTexture2D_vceuw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

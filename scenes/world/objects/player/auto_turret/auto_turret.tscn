@@ -235,5 +235,8 @@ end_cap_mode = 2
 stream = ExtResource("2_twe50")
 pitch_scale = 0.5
 
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+vertices = PackedVector2Array(0, -32, -24, -24, -32, 0, -24, 24, 0, 32, 24, 24, 32, 0, 24, -24)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

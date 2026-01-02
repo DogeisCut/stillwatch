@@ -27,7 +27,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Polygon2D:color")
+tracks/0/path = NodePath("Visuals:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -39,7 +39,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Polygon2D:scale")
+tracks/1/path = NodePath("Visuals:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -51,7 +51,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Polygon2D:z_index")
+tracks/2/path = NodePath("Visuals:z_index")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -79,7 +79,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Polygon2D:color")
+tracks/0/path = NodePath("Visuals:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -91,7 +91,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Polygon2D:scale")
+tracks/1/path = NodePath("Visuals:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -103,7 +103,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Polygon2D:z_index")
+tracks/2/path = NodePath("Visuals:z_index")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -155,7 +155,7 @@ linear_damp = 10.0
 angular_damp = 10.0
 script = ExtResource("1_uep05")
 
-[node name="Polygon2D" type="Sprite2D" parent="."]
+[node name="Visuals" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_rrhfh")
 texture = SubResource("PlaceholderTexture2D_xkrwr")
 
@@ -171,3 +171,7 @@ autoplay = "spawn"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_mo0jf")
 pitch_scale = 0.5
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+vertices = PackedVector2Array(-96, -32, 96, -32, 96, 32, -96, 32)
+affect_navigation_mesh = true
