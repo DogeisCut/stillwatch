@@ -11,8 +11,8 @@ bounce = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qr0nf"]
 shader = ExtResource("2_u1pie")
-shader_parameter/fill_color = Color(1, 0.9175284, 0, 1)
-shader_parameter/outline_color = Color(0.80859375, 0.5856515, 0.07046102, 1)
+shader_parameter/fill_color = Color(1, 0, 0, 1)
+shader_parameter/outline_color = Color(0.80784315, 0, 0.07058824, 1)
 shader_parameter/outline_thickness = 2.0
 shader_parameter/polygon_sides = 6
 
